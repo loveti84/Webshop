@@ -15,7 +15,7 @@
 1. Start XAMPP Control Panel
 2. Navigeer naar: `xampp\htdocs`
 3. Voer uit( in de map htdocs):  
-   `git clone https://github.com/LucasDS-DEV/Webshop.git`
+   `git clone https://github.com/loveti84/Webshop.git`
 4. De map Webshop staat nu in de map htdocs(waar ook dashboard staat)
 
 ### 3. Database Configuratie
