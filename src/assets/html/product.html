@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productdetails - Webshop</title>
+    
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/webshop/products">
+            <i class="bi bi-shop"></i> Webshop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/products">Producten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/popular">Populair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/login" id="loginLink">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container mt-4">
+        <a href="/webshop/products" class="btn btn-outline-primary mb-3">
+            <i class="bi bi-arrow-left"></i> Terug naar Producten
+        </a>
+
+        <div id="loading" class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Laden...</span>
+            </div>
+        </div>
+
+        <div id="productDetails" class="d-none">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 id="productName" class="card-title mb-3"></h1>
+                            <p id="productDescription" class="card-text text-muted mb-4"></p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2 id="productPrice" class="text-primary mb-0"></h2>
+                                <div>
+                                    <span id="productRating"></span>
+                                    <small id="reviewCount" class="text-muted ms-2"></small>
+                                </div>
+                            </div>
+                            
+                            <div class="text-muted">
+                                <i class="bi bi-eye"></i> <span id="productClicks"></span> weergaven
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h4>Beoordelingen</h4>
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                                <i class="bi bi-plus-circle"></i> Schrijf een Beoordeling
+                            </button>
+
+                            <div  id="reviewsList">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Schrijf een Beoordeling</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm">
+                        <div class="mb-3">
+                            <label class="form-label">Gebruikersnaam</label>
+                            <input type="text" class="form-control" id="reviewUsername" placeholder="bijv., jan_jansen">
+                            <div class="invalid-feedback d-none" id="usernameError"></div>
+                            <small class="text-muted">3-20 tekens (letters, cijfers, underscore, streepje)</small>
+                            '<small class="text-success d-none"><i class="bi bi-check-circle-fill"></i></small>'
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Uw Naam</label>
+                            <input type="text" class="form-control" id="reviewName" placeholder="bijv., Jan Jansen">
+                            <div class="invalid-feedback d-none" id="nameError"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Beoordeling</label>
+                            <select class="form-select" id="reviewScore">
+                                <option value="">Selecteer beoordeling...</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Uitstekend</option>
+                                <option value="4">⭐⭐⭐⭐ Goed</option>
+                                <option value="3">⭐⭐⭐ Gemiddeld</option>
+                                <option value="2">⭐⭐ Matig</option>
+                                <option value="1">⭐ Slecht</option>
+                            </select>
+                            <div class="invalid-feedback d-none" id="scoreError"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Beoordeling</label>
+                            <textarea class="form-control" id="reviewText" rows="4"></textarea>
+                            <div class="invalid-feedback d-none" id="textError"></div>
+                            <small class="text-muted">Max 100 tekens)</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Verstuur Beoordeling</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/webshop/src/assets/js/libraries/jquery-3.7.1.min.js"></script>
+    <script>
+     //bugy with updating header auth, header html is copied for now
+        /*$('#header-placeholder').load('/webshop/src/assets/html/includes/header.html', function() {
+            updateHeaderAuth();
+        });*/
+        $('#footer-placeholder').load('/webshop/src/assets/html/includes/footer.html');
+    </script>
+    <script src="/webshop/src/assets/js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="/webshop/src/assets/js/alertModal.js"></script>
+    <script src="/webshop/src/assets/js/auth.js"></script>
+    <script src="/webshop/src/assets/js/product.js"></script>
+</body>
+</html>

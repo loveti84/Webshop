@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Pagina niet gevonden</title>
+    
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/webshop/products">
+            <i class="bi bi-shop"></i> Webshop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/products">Producten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/popular">Populair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/login" id="loginLink">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <main>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-4">
+                                <i class="bi bi-compass text-primary" style="font-size: 5rem;"></i>
+                            </div>
+                            <h1 class="display-1 fw-bold text-primary">404</h1>
+                            <h2 class="card-title h3 mb-3">Pagina niet gevonden</h2>
+                            <p class="card-text text-muted mb-4">
+                                Sorry, de pagina die je zoekt bestaat niet of is verplaatst.
+                            </p>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4">
+                                <a href="/webshop/products" class="btn btn-primary">
+                                    <i class="bi bi-house"></i> Naar Homepage
+                                </a>
+                                <button class="btn btn-outline-secondary" onclick="window.history.back()">
+                                    <i class="bi bi-arrow-left"></i> Ga Terug
+                                </button>
+                            </div>
+
+                            <div class="mt-4">
+                                <p class="text-muted small mb-2">Mogelijk bent u op zoek naar:</p>
+                                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                                    <a href="/webshop/products" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-box-seam"></i> Producten
+                                    </a>
+                                    <a href="/webshop/popular" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-star"></i> Populair
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/webshop/src/assets/js/libraries/jquery-3.7.1.min.js"></script>
+    <script>
+           //bugy with updating header auth, header html is copied for now
+        /*$('#header-placeholder').load('/webshop/src/assets/html/includes/header.html', function() {
+            updateHeaderAuth();
+        });*/
+        $('#footer-placeholder').load('/webshop/src/assets/html/includes/footer.html');
+    </script>
+    <script src="/webshop/src/assets/js/libraries/bootstrap.bundle.min.js"></script>
+</body>
+</html>

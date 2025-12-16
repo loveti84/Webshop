@@ -1,0 +1,13 @@
+# Webshop Routing
+RewriteEngine On
+RewriteBase /webshop/
+
+
+
+# Route EVERYTHING else through public/index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/index.php [QSA,L]
+
+# Default
+DirectoryIndex public/index.php

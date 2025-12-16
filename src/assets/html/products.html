@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producten - Webshop</title>
+    
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css//bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/webshop/products">
+            <i class="bi bi-shop"></i> Webshop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/products">Producten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/popular">Populair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/login" id="loginLink">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+    <div class="container  mt-4">
+        <div class="row mb-4">
+ 
+            <div class="col-md-12 mx-auto col-lg-12">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Zoek producten...">
+                    <button class="btn btn-primary" id="searchBtn">
+                        <i class="bi bi-search"></i> Zoeken
+                    </button>
+                </div>
+                <div class="row g-2 align-items-center">
+                    <div class="col-auto">
+                        <label for="minRating" class="form-label mb-0 text-nowrap">
+                            <i class="bi bi-star-fill text-warning"></i> Minimaal:
+                        </label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm" id="minRating">
+                            <option value="0">Alle beoordelingen</option>
+                            <option value="1">1+ sterren</option>
+                            <option value="2">2+ sterren</option>
+                            <option value="3">3+ sterren</option>
+                            <option value="4">4+ sterren</option>
+                            <option value="5">5 sterren</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="sortBy" class="form-label mb-0 text-nowrap">
+                            <i class="bi bi-sort-down"></i> Sorteer op:
+                        </label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm" id="sortBy">
+                            <option value="created_at">Nieuwste eerst</option>
+                            <option value="rating">Hoogste beoordeling</option>
+                            <option value="price">Prijs</option>
+                            <option value="clicks">Meest bekeken</option>
+                            <option value="name">Naam</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm" id="sortOrder">
+                            <option value="desc">Hoog → Laag</option>
+                            <option value="asc">Laag → Hoog</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="itemsPerPage" class="form-label mb-0 text-nowrap">
+                            <i class="bi bi-list-ol"></i> Per pagina:
+                        </label>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select form-select-sm" id="itemsPerPage">
+                            <option value="8">8</option>
+                            <option value="16" selected>16</option>
+                            <option value="24">24</option>
+                            <option value="32">32</option>
+                            <option value="40">40</option>
+                            <option value="48">48</option>
+                            <option value="56">56</option>
+
+
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-outline-secondary btn-sm" id="resetFilters">
+                            <i class="bi bi-x-circle"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div id="resultsCount" class="d-none">
+                <p class="text-muted mb-0"><i class="bi bi-funnel"></i> <span id="countText"></span></p>
+            </div>
+            <div class="btn-group ms-auto" role="group">
+                <button type="button" class="btn btn-outline-primary active" id="cardViewBtn">
+                    <i class="bi bi-grid-3x3-gap"></i> Kaarten
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="tableViewBtn">
+                    <i class="bi bi-table"></i> Tabel
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="text-center my-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Laden...</span>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" id="productsGrid">
+        </div>
+
+        <div class="table-responsive d-none" id="productsTable">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Prijs</th>
+                        <th>Beoordeling</th>
+                        <th>Weergaven</th>
+                        <th>Actie</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="emptyState" class="text-center my-5 d-none">
+            <i class="bi bi-box-seam" style="font-size: 4rem; color: #ccc;"></i>
+            <h3 class="mt-3">Geen producten gevonden</h3>
+            <p class="text-muted">Probeer uw zoekopdracht aan te passen</p>
+        </div>
+
+        <div id="pagination" class="d-none mt-4">
+            <div id="paginationContainer"></div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="/webshop/src/assets/js/libraries/jquery-3.7.1.min.js"></script>
+    <script>
+
+        //bugy with updating header auth, header html is copied for now
+        /*$('#header-placeholder').load('/webshop/src/assets/html/includes/header.html', function() {
+            updateHeaderAuth();
+        });*/
+        $('#footer-placeholder').load('/webshop/src/assets/html/includes/footer.html');
+    </script>
+    <script src="/webshop/src/assets/js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="/webshop/src/assets/js/alertModal.js"></script>
+    <script src="/webshop/src/assets/js/products.js"></script>
+        <script src="/webshop/src/assets/js/auth.js"></script>
+
+</body>
+</html>

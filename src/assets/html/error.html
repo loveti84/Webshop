@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Webshop</title>
+    
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/style.css">
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/webshop/products">
+            <i class="bi bi-shop"></i> Webshop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/products">Producten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/popular">Populair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/login" id="loginLink">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <main>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-body text-center p-5">
+                            <div class="mb-4">
+                                <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 4rem;"></i>
+                            </div>
+                            <h1 class="card-title h2 mb-3">Oeps! Er is iets misgegaan</h1>
+                            <p class="card-text text-muted mb-4">
+                                Probeer het later opnieuw.
+                            </p>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                <a href="/webshop/products" class="btn btn-primary">
+                                    <i class="bi bi-house"></i> Naar Homepage
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/webshop/src/assets/js/libraries/jquery-3.7.1.min.js"></script>
+    <script>
+            //bugy with updating header auth, header html is copied for now
+        /*$('#header-placeholder').load('/webshop/src/assets/html/includes/header.html', function() {
+            updateHeaderAuth();
+        });*/
+        $('#footer-placeholder').load('/webshop/src/assets/html/includes/footer.html');
+    </script>
+    <script src="/webshop/src/assets/js/libraries/bootstrap.bundle.min.js"></script>
+</body>
+</html>

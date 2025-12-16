@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggen - Webshop</title>
+    
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/bootstrap/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/webshop/src/assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/webshop/products">
+            <i class="bi bi-shop"></i> Webshop
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/products">Producten</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/popular">Populair</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/webshop/login" id="loginLink">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="bi bi-person-circle"></i> Inloggen / Registreren</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Vul uw gegevens in om in te loggen of een nieuw account aan te maken.</p>
+                        
+                        <form id="loginForm">
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Gebruikersnaam <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="username" placeholder="bijv., jan_jansen" required>
+                                <div class="invalid-feedback d-none" id="usernameError"></div>
+                                <small class="text-muted">3-20 tekens (letters, cijfers, underscore, streepje)</small>
+                            </div>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="1" id="alreadyAccount">
+                                <label class="form-check-label" for="alreadyAccount">
+                                    Ik heb reeds een account
+                                </label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Volledige Naam <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" placeholder="bijv., Jan Jansen" required>
+                                <div class="invalid-feedback d-none" id="nameError"></div>
+                                <small class="text-muted">Wordt gebruikt als u een nieuwe gebruiker bent</small>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-box-arrow-in-right"></i> Inloggen / Registreren
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="mt-3">
+                            <small class="text-muted">
+                                <i class="bi bi-info-circle"></i> 
+                                Als uw gebruikersnaam bestaat, wordt u ingelogd. Anders wordt een nieuw account aangemaakt.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="/webshop/src/assets/js/libraries/jquery-3.7.1.min.js"></script>
+    <script>
+        // callback because of first load in the auth script 
+     //bugy with updating header auth, header html is copied for now
+        /*$('#header-placeholder').load('/webshop/src/assets/html/includes/header.html', function() {
+            updateHeaderAuth();
+        });*/
+        $('#footer-placeholder').load('/webshop/src/assets/html/includes/footer.html');
+    </script>
+    <script src="/webshop/src/assets/js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="/webshop/src/assets/js/alertModal.js"></script>
+    <script src="/webshop/src/assets/js/auth.js"></script>
+    <script src="/webshop/src/assets/js/login.js"></script>
+</body>
+</html>
