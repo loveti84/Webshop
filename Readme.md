@@ -76,6 +76,7 @@
     - Increment count
         - Anti-spam → maar één increment per product per sessie 
         - Bekeken producten worden opgeslagen in de sessie
+        - behoudt als user uitloged ()
 ---
 
 

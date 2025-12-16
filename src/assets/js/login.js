@@ -131,7 +131,8 @@ function applySubmitEvent() {
             error: function(xhr) {
                 console.log('Login error:', xhr.status, xhr.responseJSON);
                 // User not found, try to register
-                if (xhr.status === 404) {
+                if (xhr.status === 404 &&$('#alreadyAccount').is(':checked') === false) {
+                   console.log('User not found, attempting registration');
                     registerUser(username, name);
                 } else {
                     let errorMsg = 'Fout bij inloggen';
