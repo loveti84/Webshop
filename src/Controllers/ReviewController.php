@@ -36,8 +36,8 @@ class ReviewController extends Controller
             ->string($data['username'] ?? null, 'Username', 50, 3)
             ->string($data['name'] ?? null, 'Name', 100, 1)
             ->int($data['product_id'] ?? null, 'Product ID', 1)
-            ->string($data['text'] ?? null, 'Review text', 1000, 0)
-            ->int($data['score'] ?? null, 'Score', 3, 5);
+            ->string($data['text'] ?? null, 'Review text', 1000, minLength: 0)
+            ->int($data['score'] ?? null, 'Score', 1, 5);
 
         $validator->custom('Username', function($username) {
             return $username && preg_match('/^[a-zA-Z0-9_-]+$/', $username);
